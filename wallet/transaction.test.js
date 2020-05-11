@@ -1,6 +1,7 @@
 const Transaction = require('./transaction');
 const Wallet=require('./index');
 const {verifySignature}=require('../util/');
+const {REWARD_INPUT,MINING_REWARD}=require('../config')
 
 describe('Transaction',()=>{
 	let transaction,senderWallet,recipient,amount;
@@ -99,7 +100,12 @@ describe('Transaction',()=>{
 		
 		describe('and the amount is invalid',()=>{
 			it('throws an error',()=>{
-				expect(()=>{transaction.update({senderWallet,recipient:'foo',amount:999999})}).toThrow('Amount exceeds balance');
+				expect(()=>{transaction.update({
+					senderWallet,
+					recipient:'foo',
+					amount:999999
+				})})
+				.toThrow('Amount exceeds balance');
 			});
 		});
 
@@ -110,7 +116,11 @@ describe('Transaction',()=>{
 				nextAmount=50;
 				originalSenderOutput=transaction.outputMap[senderWallet.publicKey];
 
-				transaction.update({senderWallet,recipient:nextRecipient,amount:nextAmount});
+				transaction.update({
+					senderWallet,
+					recipient:nextRecipient,
+					amount:nextAmount
+				});
 			});
 
 			it('Outputs amount to next recipient',()=>{
@@ -122,7 +132,8 @@ describe('Transaction',()=>{
 			});
 
 			it('maintain total output that matches input amount',()=>{
-				expect(Object.values(transaction.outputMap).reduce((total,outputAmount)=>total+outputAmount)).toEqual(transaction.input.amount)
+				expect(Object.values(transaction.outputMap).reduce((total,outputAmount)=>total+outputAmount))
+				.toEqual(transaction.input.amount)
 			});
 
 			it('re-signs the transaction',()=>{
@@ -134,7 +145,11 @@ describe('Transaction',()=>{
 
 				beforeEach(()=>{
 					addedAmount=80;
-					transaction.update({senderWallet,recipient:nextRecipient,amount:addedAmount});
+					transaction.update({
+						senderWallet,
+						recipient:nextRecipient,
+						amount:addedAmount
+					});
 				});
 
 				it('adds to the recipient',()=>{
@@ -142,12 +157,27 @@ describe('Transaction',()=>{
 				});
 
 				it('subtracts from the sender',()=>{
-					expect(transaction.outputMap[senderWallet.publicKey]).toEqual(originalSenderOutput-nextAmount-addedAmount);
+					expect(transaction.outputMap[senderWallet.publicKey])
+					.toEqual(originalSenderOutput-nextAmount-addedAmount);
 				});
-
-
 			});
 		});	
+	});
 
+	describe('rewardTransaction()',()=>{
+		let rewardTransaction, minerWallet;
+
+		beforeEach(()=>{
+			minerWallet=new Wallet();
+			rewardTransaction=Transaction.rewardTransaction({minerWallet});
+		});
+
+		it('create transaction with reward input',()=>{
+			expect(rewardTransaction.input).toEqual(REWARD_INPUT);
+		});
+
+		it('create transaction for miner with mining reward',()=>{
+			expect(rewardTransaction.outputMap[minerWallet.publicKey]).toEqual(MINING_REWARD);
+		});
 	});
 });

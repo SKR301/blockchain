@@ -15,13 +15,47 @@ class Wallet{
 		return this.keyPair.sign(cryptoHash(data));
 	}
 
-	createTransaction({recipient,amount}){
+	createTransaction({recipient,amount,chain}){
+		if(chain){
+			this.balance=Wallet.calculateBalance({
+				chain,
+				address:this.publicKey
+			});
+		}
+
 		if(amount>this.balance)
 		{
 			throw new Error('Amount exceeds balance');
 		}
 
 		return new Transaction({senderWallet:this,recipient,amount});
+	}
+
+	static calculateBalance({chain,address}){
+		let outputsTotal=0;
+		let hasConductedTransaction=false;
+
+		for(let a=chain.length-1;a>0;a--){
+			const block=chain[a];		
+
+			for(let transaction of block.data){
+
+				if(transaction.input.address===address){
+					hasConductedTransaction=true;
+				}
+				const addressOutput=transaction.outputMap[address];
+				
+
+				if(addressOutput){
+					outputsTotal = outputsTotal+addressOutput;
+				}
+			}
+
+			if(hasConductedTransaction){
+				break;
+			}
+		}
+		return hasConductedTransaction?outputsTotal:STARTING_BALANCE+outputsTotal;
 	}
 };
 

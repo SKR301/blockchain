@@ -72,7 +72,8 @@ describe('Block',()=>{
 		});
 
 		it('set a `hash` that matches diff criteria',()=>{
-			expect(hexToBinary(minedBlock.hash).substring(0,minedBlock.difficulty)).toEqual('0'.repeat(minedBlock.difficulty));
+			expect(hexToBinary(minedBlock.hash).substring(0,minedBlock.difficulty))
+			.toEqual('0'.repeat(minedBlock.difficulty));
 		});
 
 		it('adjusts difficulty',()=>{
@@ -84,17 +85,26 @@ describe('Block',()=>{
 
 	describe('adjustDifficulty()',()=>{
 		it('raises block difficulty',()=>{
-			expect(Block.adjustDifficulty({originalBlock:block,timestamp:block.timestamp+MINE_RATE-100})).toEqual(block.difficulty+1);
+			expect(Block.adjustDifficulty({
+				originalBlock:block,
+				timestamp:block.timestamp+MINE_RATE-100}))
+			.toEqual(block.difficulty+1);
 		});
 
 		it('lowers block difficulty',()=>{
-			expect(Block.adjustDifficulty({originalBlock:block,timestamp:block.timestamp+MINE_RATE+100})).toEqual(block.difficulty-1);
+			expect(Block.adjustDifficulty({
+				originalBlock:block,
+				timestamp:block.timestamp+MINE_RATE+100}))
+			.toEqual(block.difficulty-1);
 		});
 
 		it('set lower base to 1',()=>{
 			block.difficulty=-1;
 
-			expect(Block.adjustDifficulty({originalBlock:block,timestamp})).toEqual(1);
+			expect(Block.adjustDifficulty({
+				originalBlock:block,
+				timestamp}))
+			.toEqual(1);
 		});
 	});
 });
