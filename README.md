@@ -16,6 +16,8 @@
   ## Setup
   How to start the program:-
   1. Open your **command prompt** or **terminal** in the directory of the saved files.
+  2. Download all the dependencies from **package.json** using command `npm install`.
+  3. Fix any audits if appears using `npm fix audit`.
   2. Type command `npm run dev`.
   3. Open your **browser**.
   4. Goto URL `localhost:3000`.
