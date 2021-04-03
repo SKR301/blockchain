@@ -5,7 +5,6 @@
   - [Technologies](#technologies)
   - [Setup](#setup)
   - [Working](#working)
-  - [Screenshots](#screenshots)
   - [Contributors](#contributors)
   
   ## Technologies
@@ -27,19 +26,7 @@
   How the program works:-
   - **Home Page** : It shows a welcome message along with links to various pages along with your *wallet address* and *wallet balance*.
   - **Block Page** : It shows all the blocks of the *Blockchain*.
-  - **Conduct a Transaction Page** : Here you can perform transaction and can send the *currency* to other users by providing their *wallet address*.
   - **Transaction Pool Page** : It allows you to check the *pool of transactions* ready to be mined and a button to mine them.
-  
-  ## Screenshots
-  Some screenshots of the program:-
-  - *Home Page*<br />
-  ![Home Page](https://github.com/SKR301/blockchain/blob/master/ScreenShots/home.png)
-  - *Block Page*<br />
-  ![Block Page](https://github.com/SKR301/blockchain/blob/master/ScreenShots/block.png)
-  - *Conduct a Transaction Page*<br />
-  ![Conduct a Transaction Page](https://github.com/SKR301/blockchain/blob/master/ScreenShots/pool.png)
-  - *Transaction Pool Page*<br />
-  ![Transaction Pool Page](https://github.com/SKR301/blockchain/blob/master/ScreenShots/transaction.png)
   
   ## Contributors
   @SKR301- [Saurav Kumar](https://github.com/SKR301): Original Creator
