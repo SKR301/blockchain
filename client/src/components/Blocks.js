@@ -1,6 +1,7 @@
 import React ,{Component} from 'react';
 import Block from './Block';
 import {Link} from 'react-router-dom';
+import App from '../components/App';
 
 class Blocks extends Component{
 	state={blocks:[]};
@@ -13,18 +14,21 @@ class Blocks extends Component{
 
 	render(){
 		console.log('this.state',this.state);
+
 		return (
 			<div>
-			<div><Link to='/'>Home</Link></div>
-			<br/>
-				<h3>Blocks</h3>
-				{
-					this.state.blocks.map(block=>{
-						return(
-							<Block key={block.hash} block={block}/>
-						);
-					})
-				}
+				<App />
+
+				<div classname='Blocks'>
+					<h3>Blocks</h3>
+					{
+						this.state.blocks.map(block=>{
+							return(
+								<Block key={block.hash} block={block}/>
+							);
+						})
+					}
+				</div>
 			</div>
 		);
 	}

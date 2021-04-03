@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {FormGroup,FormControl,Button} from 'react-bootstrap';
+import {FormGroup,FormControl,Button,Form} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import history from '../history';
 
@@ -25,39 +25,47 @@ class ConductTransaction extends Component{
 		.then(response=>response.json())
 		.then(json=>{
 			alert(json.message||json.type);
-			history.push('/transaction-pool');		
+			this.setState({recipient:'',amount:'0'});
+			history.push('/transaction-pool');	
 		});
 	}
 
 	render(){
 		return (
 			<div className='ConductTransaction'>
-				<Link to='/'>Home</Link>
-				<h3>Conduct a Transaction</h3>
-				<FormGroup>
-					<FormControl
-						input='text'
-						placeholder='recipient'
-						value={this.state.recipient}
-						onChange={this.updateRecipient}
-					/>
-				</FormGroup>
-				<FormGroup>
-					<FormControl
-						input='number'
-						placeholder='amount'
-						value={this.state.amount}
-						onChange={this.updateAmount}
-					/>
-				</FormGroup>
-				<div>
-					<Button
-						bsStyle='danger'
-						onClick={this.ConductTransaction}
-					>
-						Submit
-					</Button>
-				</div>
+				<Form inline className="p-3 bg-light fixed-top">
+
+					<FormGroup className='recipient'>
+						<FormControl
+							input='text'
+							size='small'
+							placeholder='recipient'
+							value={this.state.recipient}
+							onChange={this.updateRecipient}
+						/>
+					</FormGroup>
+
+					<FormGroup className="pl-2">
+						<FormControl
+							input='number'
+							placeholder='amount'
+							value={this.state.amount}
+							onChange={this.updateAmount}
+						/>
+					</FormGroup>
+
+					<div>
+						<FormGroup className="pl-2">
+							<Button
+								bsStyle='success'
+								className='cus-btn'
+								onClick={this.ConductTransaction}
+							>
+								Send
+							</Button>
+						</FormGroup>
+					</div>
+				</Form>
 			</div>
 		)
 	}
