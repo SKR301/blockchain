@@ -10,6 +10,7 @@
   
   ## Technologies
   - JavaScript
+  - Node Js v 15.0.1
   - Bootstrap v 4.0
   - HTML v 5.0
   
