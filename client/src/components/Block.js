@@ -24,14 +24,13 @@ class Block extends Component {
 					{
 						data.map(transaction=>(
 							<div key={transaction.id}>
-								<hr/>
 								<Transaction transaction={transaction}/>
 							</div>
 						))
 					}	
 					<br/>
-					<Button bsStyle='danger' bsSize='small' onClick={this.toggleTransaction}>
-						Show Less
+					<Button className='mt-3 ml-5 p-2 font-15' bsStyle='danger' onClick={this.toggleTransaction}>
+						Less...
 					</Button>
 				</div>
 			)
@@ -40,8 +39,8 @@ class Block extends Component {
 		return(
 			<div>
 				<div>Data:{dataDisplay}</div>
-				<Button bsStyle='danger' bsSize='small' onClick={this.toggleTransaction}>
-					Show More
+				<Button className='mt-3 ml-5 p-2 font-15' bsStyle='primary' onClick={this.toggleTransaction}>
+					More...
 				</Button>
 			</div>
 		); 
@@ -55,9 +54,14 @@ class Block extends Component {
 			
 		return (
 			<div className='Block'>
-				<div>Hash:{hashDisplay}</div>
-				<div>Timestamp:{new Date(timestamp).toLocaleString()}</div>
-				{this.displayTransaction}
+				<div className='card bg-light mt-3 w-50 mx-auto'>
+					<div className='card-header text-primary font-25'>Hash: {hashDisplay}
+						<span className='float-right text-secondary font-15 mt-5'>Timestamp: {new Date(timestamp).toLocaleString()}</span>
+					</div>
+					<div className='card-body text-dark'>
+						<div className='card-text font-20'>{this.displayTransaction}</div>
+					</div>
+				</div>
 			</div>
 		);
 	}

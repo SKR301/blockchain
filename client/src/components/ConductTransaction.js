@@ -27,6 +27,7 @@ class ConductTransaction extends Component{
 			alert(json.message||json.type);
 			this.setState({recipient:'',amount:'0'});
 			history.push('/transaction-pool');	
+			window.location.reload();
 		});
 	}
 
@@ -58,7 +59,7 @@ class ConductTransaction extends Component{
 						<FormGroup className="pl-2">
 							<Button
 								bsStyle='success'
-								className='cus-btn'
+								className='font-20'
 								onClick={this.ConductTransaction}
 							>
 								Send

@@ -17,7 +17,7 @@ class Profile extends Component{
 		const {address,balance}=this.state.walletInfo;
 		return (
 			<div className='Profile'>
-				<div className='profile p-5 bg-dark'>
+				<div className='p-5 bg-dark w-100'>
 					<img className='rounded-circle mx-auto d-block' src={logo}></img>
 					<div className='text-center'>
 						<h1 className='text-light mt-5'>Balance:</h1>

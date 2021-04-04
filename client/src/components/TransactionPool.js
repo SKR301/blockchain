@@ -3,6 +3,7 @@ import {Button} from 'react-bootstrap';
 import Transaction from './Transaction';
 import {Link} from 'react-router-dom';
 import history from '../history';
+import App from '../components/App';
 
 const POLL_INTERVAL_MS=10000;
 
@@ -40,25 +41,30 @@ class TransactionPool extends Component{
 	render(){
 		return (
 			<div className='TransactionPool'>
-				<div><Link to='/'>Home</Link></div>
-				<h3>Transaction Pool</h3>
-				{
-					Object.values(this.state.transactionPoolMap).map(transaction=>{
-						return (
-							<div key={transaction.id}>
-								<hr/>
-								<Transaction transaction={transaction}/>
-							</div>
-						)
-					})
-				}
-				<hr/>
-				<Button
-					bsStyle='danger'
-					onClick={this.fetchMineTransactions}
-				>	
-					Mine New Transaction
-				</Button>
+			<App />
+				<div className='mt-3 w-50 mx-auto'>
+					<div className='display-3 text-center text-primary'>TransactionPool</div>
+
+					<Button
+						className='mt-3 ml-5 p-2 font-15 float-right'
+						bsStyle='danger'
+						onClick={this.fetchMineTransactions}
+					>	
+						Mine Transactions
+					</Button>
+
+					<div className='mt-5'>
+						{
+							Object.values(this.state.transactionPoolMap).map(transaction=>{
+								return (
+									<div className='font-20' key={transaction.id}>
+										<Transaction transaction={transaction}/>
+									</div>
+								)
+							})
+						}
+					</div>
+				</div>
 			</div>
 		)
 	}

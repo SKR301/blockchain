@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ConductTransaction from '../components/ConductTransaction';
 import Profile from '../components/Profile';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 class App extends Component{
 
@@ -11,6 +12,7 @@ class App extends Component{
 				<Profile />
 				<ConductTransaction />
 				<Navbar />
+				<Footer />
 			</div>
 		);
 	}

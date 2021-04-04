@@ -12,7 +12,7 @@ class Navbar extends Component{
 					<div className='nav'>
 						<FormGroup className="pt-2 pl-2">
 							<Button
-								className='cus-btn btn btn-outline-warning'
+								className='font-20 btn btn-outline-warning'
 								href="/"
 							>
 								Home
@@ -20,7 +20,7 @@ class Navbar extends Component{
 						</FormGroup>
 						<FormGroup className="pt-2 pl-2">
 							<Button
-								className='cus-btn btn btn-outline-warning'
+								className='font-20 btn btn-outline-warning'
 								href="/blocks"
 							>
 								Blocks
@@ -28,7 +28,7 @@ class Navbar extends Component{
 						</FormGroup>
 						<FormGroup className="pt-2 pl-2">
 							<Button
-								className='cus-btn btn btn-outline-warning'
+								className='font-20 btn btn-outline-warning'
 								href="/transaction-pool"
 							>
 								Transaction

@@ -16,11 +16,10 @@ class Blocks extends Component{
 		console.log('this.state',this.state);
 
 		return (
-			<div>
+			<div className='Blocks'>
 				<App />
-
-				<div classname='Blocks'>
-					<h3>Blocks</h3>
+				<div className='mt-3'>
+					<div className='display-3 text-center text-primary'>Blocks</div>
 					{
 						this.state.blocks.map(block=>{
 							return(
