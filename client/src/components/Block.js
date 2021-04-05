@@ -39,7 +39,7 @@ class Block extends Component {
 		return(
 			<div>
 				<div>Data:{dataDisplay}</div>
-				<Button className='mt-3 ml-5 p-2 font-15' bsStyle='primary' onClick={this.toggleTransaction}>
+				<Button className='mt-5 ml-5 p-2 font-15' bsStyle='primary' onClick={this.toggleTransaction}>
 					More...
 				</Button>
 			</div>

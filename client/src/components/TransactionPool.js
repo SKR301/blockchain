@@ -46,14 +46,14 @@ class TransactionPool extends Component{
 					<div className='display-3 text-center text-primary'>TransactionPool</div>
 
 					<Button
-						className='mt-3 ml-5 p-2 font-15 float-right'
+						className='mt-3 p-2 font-15 float-right'
 						bsStyle='danger'
 						onClick={this.fetchMineTransactions}
 					>	
 						Mine Transactions
 					</Button>
 
-					<div className='mt-5'>
+					<div className='pool'>
 						{
 							Object.values(this.state.transactionPoolMap).map(transaction=>{
 								return (
